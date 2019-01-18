@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Post from './components/HelloWorld'
-import Hello from './components/About'
-import Forms from './components/HelloWorld'
+import About from './components/About'
 
 Vue.use(Router)
 
@@ -12,15 +11,11 @@ const router = new Router(
             {
                 path: '/',
                 name: 'home',
-                component: Hello,
-                beforeEnter: (to, from, next) => {
-                    console.log('路由-前置-钩子')
-                    next()
-                }
+                component: About
                 }, {
                 path: '/posts/:title',
                 name: 'post',
-                component: Forms
+                component: Post,
             },
         ]
     }

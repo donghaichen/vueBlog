@@ -4,11 +4,9 @@ import App from './App.vue'
 import axios from 'axios'
 import Marked from 'marked'
 import router from './router'
+import config from './config'
 
-// axios.defaults.baseURL = 'https://api.example.com';
-// axios.defaults.headers.common['Authorization'] = 'Token';
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-
+Vue.prototype.config = config
 Vue.prototype.$ajax = axios
 Vue.prototype.marked = Marked
 Vue.config.productionTip = false
