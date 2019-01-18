@@ -1,28 +1,59 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="vue">
+    <div id="nav">
+      <router-link to="/">主页</router-link>
+      <router-link to="/posts/centos-compiled-installation-php7.3.1">表单</router-link>
+      <router-link to="/posts/php-the-right-way">表单</router-link>
+    </div>
+    <router-view/>
   </div>
+    <!--<main>-->
+    <!--<aside class="sidebar">-->
+      <!--<div class="search"><div class="input-wrap">-->
+        <!--<input type="search" value="" placeholder="搜索">-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<h1 class="app-name"><a class="app-name-link" data-nosearch="" href="/">首页</a></h1>-->
+      <!--<div class="sidebar-nav"  v-html="bindContent"></div>-->
+      <!--<router-link to="/post/666">VUE</router-link>-->
+    <!--</aside>-->
+      <!--<router-view/>-->
+      <!--</main>-->
+  <!--</div>-->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  name: 'vue',
+  data(){
+    return {
+      sidebar: '',
+      title: '',
+    }
+  },
+  mounted: function ()
+  {
+    this.$ajax.get('https://blog.mengniang.tv/_sidebar.md')
+            .then((response) => {
+              this.sidebar = response.data
+            }).catch((error) => {
+      // 请求已发出，但服务器响应的状态码不在 2xx 范围内
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+    })
+  },
+  computed: {
+    bindContent: function () {
+      return this.marked(this.sidebar, { sanitize: true })
+    }
   }
 }
 </script>
 
 <style>
+@import "https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css";
+@import "./assets/css/style.css";
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
