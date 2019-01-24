@@ -1,24 +1,36 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-
+import About from "./views/About";
+import Post from "./views/Post";
 Vue.use(Router);
+const NotFound = {
+  template: "404 not found"
+};
 
 export default new Router({
   routes: [
     {
       path: "/",
       name: "home",
-      component: Home
+      component: About,
+      meta: {
+        title: "About"
+      }
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/posts/:title",
+      name: "post",
+      component: Post,
+      meta: {
+        title: "Post"
+      }
+    },
+    {
+      path: "*",
+      component: NotFound,
+      meta: {
+        title: "找不到页面"
+      }
     }
   ]
 });
