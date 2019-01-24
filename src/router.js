@@ -13,24 +13,24 @@ export default new Router({
       path: "/",
       name: "home",
       component: About,
-      meta: {
-        title: "About"
-      }
+      // meta: {
+      //   title: "About"
+      // }
     },
     {
       path: "/posts/:title",
       name: "post",
       component: Post,
-      meta: {
-        title: "Post"
-      }
+      // meta: {
+      //   title: "Post"
+      // }
     },
     {
       path: "*",
       component: NotFound,
-      meta: {
-        title: "找不到页面"
-      }
+      // meta: {
+      //   title: "找不到页面"
+      // }
     }
   ]
 });

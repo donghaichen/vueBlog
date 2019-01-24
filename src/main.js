@@ -7,13 +7,13 @@ import store from "./store";
 import fun from "./comnon/function.js";
 import Marked from "marked";
 import config from "./config";
-import request from "./comnon/aixos";
+import aixos from "./comnon/aixos";
 import apiSetting from "./comnon/apiSetting.js";
 
 Vue.prototype.fun = fun;
 Vue.prototype.config = config;
 Vue.prototype.marked = Marked;
-Vue.prototype.request = request;
+Vue.prototype.request = aixos;
 Vue.prototype.apiSetting = apiSetting;
 
 Vue.config.productionTip = false;
@@ -21,7 +21,7 @@ Vue.config.productionTip = false;
 router.beforeEach((to, from, next) => {
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
-    document.title = to.meta.title;
+    // document.title = to.meta.title;
   }
   next();
 });

@@ -1,4 +1,5 @@
 const config = {
+  title: "女孩为何穿短裙",
   apiUrl: "https://blog.mengniang.tv/",
   github: {
     clientID: "be8d7d55347eee3e1e66",

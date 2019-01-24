@@ -1,6 +1,6 @@
 <template>
   <div id="vue" class="animated fadeIn">
-    <div id="loading">
+    <div id="loading" v-if="isLoading">
       <div class="center">
         <div class="typing_loader"></div>
       </div>
@@ -33,7 +33,7 @@ export default {
     return {
       sidebar: "",
       title: "",
-      loadFlag: true
+      isLoading: false
     };
   },
   mounted: function() {

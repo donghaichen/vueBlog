@@ -1,7 +1,6 @@
 import axios from "axios";
 import qs from "qs";
 import config from "../config";
-
 // 请求拦截器
 axios.interceptors.request.use((config) => {
     showLoading();

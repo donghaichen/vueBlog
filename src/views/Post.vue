@@ -33,8 +33,13 @@ export default {
       this.request(this.apiSetting.getPost).then(
         res => {
           var url = this.config.github.blob + this.$route.path + ".md";
-          var editHtml = "\n\n[:memo: Edit on Github](" + url + ")\n";
+          var editHtml = "- - -";
+          editHtml += "\n[:memo: Edit on Github](" + url + ")\n";
+          editHtml += "- - -";
           this.input = res.data + editHtml;
+          var title = res.data.match(/#\s[^\r\n]+/)[0].replace(/#+/g, "");
+          console.log(title);
+          document.title = title + "_" + this.config.title;
         },
         error => {
           this.input = error.status;

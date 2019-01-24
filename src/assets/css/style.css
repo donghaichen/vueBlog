@@ -127,7 +127,7 @@
     left: 0px;
     background-color: var(--theme-color,#42b983);
     z-index: 999;
-    display: none;
+    /*display: none;*/
 }
 .center{
     position: absolute;
