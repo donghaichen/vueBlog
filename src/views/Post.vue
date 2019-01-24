@@ -2,15 +2,12 @@
   <section class="content" id="content">
     <article class="markdown-section" id="main">
       <div v-html="content"></div>
-      <div id="gitalk-container"></div>
+      <div id="comments"></div>
     </article>
   </section>
 </template>
 
 <script>
-import "gitalk/dist/gitalk.css";
-import Gitalk from "gitalk";
-
 export default {
   name: "HelloWorld",
   props: {
@@ -30,15 +27,15 @@ export default {
   methods: {
     getPost: function() {
       this.apiSetting.getPost.url = this.$route.path + ".md";
+      this.path = this.$route.path + ".md";
       this.request(this.apiSetting.getPost).then(
         res => {
           var url = this.config.github.blob + this.$route.path + ".md";
-          var editHtml = "- - -";
+          var editHtml = "\n- - -";
           editHtml += "\n[:memo: Edit on Github](" + url + ")\n";
           editHtml += "- - -";
           this.input = res.data + editHtml;
           var title = res.data.match(/#\s[^\r\n]+/)[0].replace(/#+/g, "");
-          console.log(title);
           document.title = title + "_" + this.config.title;
         },
         error => {
@@ -46,26 +43,29 @@ export default {
           console.log(error);
         }
       );
+      this.valine();
     },
-    gitalk: function() {
-      var config = this.config;
-      var github = config.github;
-      const gitalk = new Gitalk({
-        clientID: github.clientID,
-        clientSecret: github.clientSecret,
-        repo: github.repo,
-        owner: github.owner,
-        admin: [github.owner],
-        id: this.$route.path + ".md",
-        labels: [github.owner],
-        distractionFreeMode: false
+    valine: function() {
+      var config = this.config.valine;
+      const Valine = require("valine");
+      if (typeof window !== "undefined") {
+        window.AV = require("leancloud-storage")
+      }
+      new Valine({
+        el: "#comments" ,
+        appId: config.appId,
+        appKey: config.appKey,
+        notify: false,
+        verify: false,
+        avatar: "mm",
+        placeholder: config.placeholder,
+        path: this.$route.path + ".md",
+        meta: ["nick", "link"]
       });
-      gitalk.render("gitalk-container");
     }
   },
   mounted: function() {
     this.getPost();
-    this.gitalk();
   },
   computed: {
     content: function() {

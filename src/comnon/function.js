@@ -3,7 +3,7 @@ export default {
     return text
       .replace(/<(pre|template|code)[^>]*?>[\s\S]+?<\/(pre|template|code)>/g,
         function (m) {
-          return m.replace(/:/g, "__colon__");
+          return m.replace(/:/g, "__colon__").replace(/language-/g, "");
         }
       )
       .replace(/:(\w+?):/ig,  function (m, $1) {

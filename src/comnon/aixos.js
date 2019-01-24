@@ -1,6 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import config from "../config";
+
 // 请求拦截器
 axios.interceptors.request.use((config) => {
     showLoading();
@@ -20,10 +21,12 @@ axios.interceptors.response.use((response) => {
 });
 
 function hideLoading() {
+  localStorage.isLoading = false;
   console.log("Request end");
 }
 
 function showLoading() {
+  localStorage.isLoading = true;
   console.log("Request start");
 }
 

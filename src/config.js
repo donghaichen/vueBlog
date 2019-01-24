@@ -1,11 +1,13 @@
 const config = {
   title: "女孩为何穿短裙",
   apiUrl: "https://blog.mengniang.tv/",
+  valine: {
+    appId: "aKJPnQVbmUONiNHlETUgS6VN-gzGzoHsz",
+    appKey: "XtiaFel6Sko3gex83ACWlym2",
+    placeholder: "just go go"
+  },
   github: {
-    clientID: "be8d7d55347eee3e1e66",
-    clientSecret: "ed1e2d08ddee6e7108f5aabaa4d72f676f4fcfdd",
     repo: "donghaichen.github.io",
-    owner: "donghaichen",
     row: "https://raw.githubusercontent.com/donghaichen/donghaichen.github.io/master",
     blob: "https://github.com/donghaichen/donghaichen.github.io/blob/master"
   }

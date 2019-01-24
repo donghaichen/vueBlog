@@ -198,3 +198,16 @@
 
 /* theme */
 :root{--theme-color: #bad0f7;}
+code:after {
+    color: #ccc;
+    content: attr(class);
+    font-size: .6rem;
+    font-weight: 600;
+    height: 15px;
+    line-height: 15px;
+    padding: 5px 10px 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
