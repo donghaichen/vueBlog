@@ -1,6 +1,7 @@
 const config = {
   title: "女孩为何穿短裙",
-  apiUrl: "/",
+  // apiUrl: "/",
+  apiUrl: "https://blog.mengniang.tv/",
   valine: {
     appId: "aKJPnQVbmUONiNHlETUgS6VN-gzGzoHsz",
     appKey: "XtiaFel6Sko3gex83ACWlym2",

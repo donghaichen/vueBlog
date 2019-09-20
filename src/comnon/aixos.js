@@ -22,12 +22,12 @@ axios.interceptors.response.use((response) => {
 
 function hideLoading() {
   localStorage.isLoading = false;
-  console.log("Request end");
+  // console.log("Request end");
 }
 
 function showLoading() {
   localStorage.isLoading = true;
-  console.log("Request start");
+  // console.log("Request start");
 }
 
 function errorState(response) {

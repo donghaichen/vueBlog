@@ -1,5 +1,5 @@
 <template>
-    <section class="content">
+    <section class="content animated fadeIn">
         <article class="markdown-section" id="main">
             <div v-html="content"></div>
         </article>

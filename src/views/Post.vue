@@ -1,8 +1,8 @@
 <template>
-  <section class="content" id="content">
+  <section class="content animated fadeIn" id="content">
     <article class="markdown-section" id="main">
       <div v-html="content"></div>
-      <div id="comments"></div>
+      <div id="comments" class="animated bounceInUp"></div>
     </article>
   </section>
 </template>
@@ -26,8 +26,7 @@ export default {
   },
   methods: {
     getPost: function() {
-      this.apiSetting.getPost.url = this.$route.path + ".md";
-      this.path = this.$route.path + ".md";
+      this.apiSetting.getPost.url = 'posts/' + this.$route.query.title + '.md'
       this.request(this.apiSetting.getPost).then(
         res => {
           var url = this.config.github.blob + this.$route.path + ".md";
@@ -35,7 +34,7 @@ export default {
           editHtml += "\n[:memo: Edit on Github](" + url + ")\n";
           editHtml += "- - -";
           this.input = res.data + editHtml;
-          var title = res.data.match(/#\s[^\r\n]+/)[0].replace(/#+/g, "");
+          var title = res.data.match(/#\s[^\n]+/)[0].replace(/#+/g, "");
           document.title = title + "_" + this.config.title;
         },
         error => {

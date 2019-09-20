@@ -1,6 +1,6 @@
 const serviceModule = {
   getSiderbar: {
-    url: "_sidebar.md",
+    url: "sidebar.json",
     method: "GET"
   },
   getReadeMe: {
